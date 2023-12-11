@@ -26,7 +26,7 @@ const task3 = () => {
 };
 
 /** 04 Arrow Functions and reduce */
-function task4() {
+const task4 = () => {
   const doubleAndSquareAndSum = (numArr) =>
     numArr
       .map((n) => n * 2)
@@ -40,6 +40,13 @@ function task4() {
 
   console.log(doubleAndSquareAndSum([2, 4, 5]));
   console.log(doubleAndSquareAndSumOneLine([2, 4, 5]));
-}
+};
 
-task4();
+/** 06 Remove false values from a given array */
+const task6 = () => {
+  const compact = (arr) => arr.filter((el) => !!el);
+
+  console.log(compact([0, 1, false, 2, "", 3, "a", "e" * 23, NaN, "s", 34]));
+};
+
+task6();
