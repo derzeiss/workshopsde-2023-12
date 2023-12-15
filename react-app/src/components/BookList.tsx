@@ -1,4 +1,4 @@
-import { Book } from "../domain/book/Book";
+import { Book } from "workshops-de_shared";
 import { BookListItem } from "./BookListItem";
 
 interface BookListProps {
@@ -52,7 +52,7 @@ export const BookList = ({ books }: BookListProps) => {
       <br />
       <small>Maximum price: {maxPriceReduce}</small>
       {books.map((b) => (
-        <BookListItem book={b} />
+        <BookListItem key={b.id} book={b} />
       ))}
     </div>
   );
