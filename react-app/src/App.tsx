@@ -1,11 +1,14 @@
 import { AppHeader } from "./components/AppHeader";
-import { ExampleBook } from "./components/ExampleBook";
+import { BookListItem } from "./components/BookListItem";
+import { exampleBooks } from "./domain/book/exampleBooks";
 
 function App() {
   return (
     <div className="app">
       <AppHeader />
-      <ExampleBook />
+      <BookListItem book={exampleBooks[0]} />
+      <BookListItem book={exampleBooks[1]} />
+      <BookListItem book={exampleBooks[2]} />
     </div>
   );
 }
