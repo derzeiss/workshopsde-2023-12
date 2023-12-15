@@ -1,16 +1,9 @@
-import { Book } from "workshops-de_shared";
+import { Book, formatPrice } from "workshops-de_shared";
 import { BookListItem } from "./BookListItem";
 
 interface BookListProps {
   books: Book[];
 }
-
-const formatPrice = (amount: number) => {
-  return Intl.NumberFormat(navigator.language, {
-    currency: "USD",
-    style: "currency",
-  }).format(amount);
-};
 
 // const str: string = 1 + "" + String(1);
 // const num: number = +"1" + Number("2") + parseInt("3") + parseFloat("4.23");

@@ -1,4 +1,4 @@
-import { Book } from "../domain/book/Book";
+import { Book } from "workshops-de_shared";
 
 const book: Book = {
   id: "1001606140805",
