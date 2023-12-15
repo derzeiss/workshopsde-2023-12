@@ -7,9 +7,9 @@ export interface Book {
   subtitle: string;
   isbn: string;
   abstract: string;
-  numPages: 123;
+  numPages: number;
   author: string;
   publisher: string;
-  price: "$..";
-  cover: "http://….png";
+  price: string;
+  cover: string;
 }
