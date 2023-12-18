@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Book, cx } from "workshops-de_shared";
+import { Hideable } from "./Hideable";
 import { LikeCounter } from "./LikeCounter";
-import { CrazyButton } from "./CrazyButton";
 
 interface BookListItemProps {
   book: Book;
@@ -21,8 +21,9 @@ export const BookListItem: React.FC<BookListItemProps> = ({ book }) => {
       </h2>
       <LikeCounter likes={likes} onLikesChange={setLikes} />
       <h3>{book.subtitle}</h3>
-      <CrazyButton>{book.author}</CrazyButton>
+      {/* <CrazyButton>{book.author}</CrazyButton> */}
       <div className="text-meta">by {book.author}bitt</div>
+      <Hideable>{book.abstract}</Hideable>
     </div>
   );
 };
