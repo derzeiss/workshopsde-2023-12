@@ -31,7 +31,7 @@ export const BookList = ({ books }: BookListProps) => {
 
   const maxPriceReduce = books
     .map((book) => +book.price.substring(1))
-    .reduce((prev, curr) => Math.max(prev, curr));
+    .reduce((prev, curr) => Math.max(prev, curr), 0);
 
   return (
     <div className="book-list">
