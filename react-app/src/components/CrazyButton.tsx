@@ -1,14 +1,7 @@
 import { PropsWithChildren, useState } from "react";
+import { randint } from "workshops-de_shared";
 
 const colors = ["red", "green", "blue", "yellow"];
-
-const randint = (min: number, max?: number) => {
-  if (max === undefined) {
-    max = min;
-    min = 0;
-  }
-  return min + Math.floor(Math.random() * (max - min));
-};
 
 const pick = <T,>(arr: T[]) => {
   return arr[randint(arr.length)];

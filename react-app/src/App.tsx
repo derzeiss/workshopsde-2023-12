@@ -4,6 +4,8 @@ import { AppHeader } from "./components/AppHeader";
 import { BookList } from "./components/BookList";
 import { Hideable } from "./components/Hideable";
 import { getBooks } from "./domain/book/api";
+import { Counter } from "./components/Counter";
+import { useCrazyCounter } from "./domain/counter/useCounter";
 
 type FetchState = "initial" | "loading" | "success" | "error";
 
@@ -27,6 +29,7 @@ function App() {
   return (
     <div className="app">
       <AppHeader />
+      <Counter initialValue={3} useCounter={useCrazyCounter} />
       {state === "initial" ||
         (state === "loading" && (
           <h2 className="text-meta m-top">Loading...</h2>

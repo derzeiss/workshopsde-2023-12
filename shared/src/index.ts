@@ -1,6 +1,7 @@
 // util
 export * from "./util/cx";
 export * from "./util/formatPrice";
+export * from "./util/randint";
 
 // domain
 // -- book
