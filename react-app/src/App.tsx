@@ -1,30 +1,12 @@
-import { useEffect, useState } from "react";
-import { Book } from "workshops-de_shared";
 import { AppHeader } from "./components/AppHeader";
 import { BookList } from "./components/BookList";
-import { Hideable } from "./components/Hideable";
-import { getBooks } from "./domain/book/api";
 import { Counter } from "./components/Counter";
+import { Hideable } from "./components/Hideable";
+import { useBooks } from "./domain/book/useBooks";
 import { useCrazyCounter } from "./domain/counter/useCounter";
 
-type FetchState = "initial" | "loading" | "success" | "error";
-
 function App() {
-  const [state, setState] = useState<FetchState>("initial");
-  const [books, setBooks] = useState<Book[]>([]);
-
-  useEffect(() => {
-    setState("loading");
-    getBooks()
-      .then((apiBooks) => {
-        setState("success");
-        setBooks(apiBooks);
-      })
-      .catch((err) => {
-        console.error("FETCH ERR:", err);
-        setState("error");
-      });
-  }, []);
+  const { books, state } = useBooks();
 
   return (
     <div className="app">
