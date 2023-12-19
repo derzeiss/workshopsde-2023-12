@@ -1,5 +1,7 @@
 import { Book, formatPrice } from "workshops-de_shared";
 import { BookListItem } from "./BookListItem";
+import { ThemeContext } from "../domain/theme/ThemeContext";
+import { useState } from "react";
 
 interface BookListProps {
   books: Book[];
@@ -20,6 +22,7 @@ interface BookListProps {
 // };
 
 export const BookList = ({ books }: BookListProps) => {
+  const [primaryColor, setPrimaryColor] = useState("green");
   const minPages = books.map((book) => book.numPages).sort()[0];
   const maxPages = books.map((book) => book.numPages).sort()[books.length - 1];
 
@@ -34,19 +37,21 @@ export const BookList = ({ books }: BookListProps) => {
     .reduce((prev, curr) => Math.max(prev, curr), 0);
 
   return (
-    <div className="book-list">
-      <small>Number of books: {books.length}</small>
-      <br />
-      <small>Minimum number of pages: {minPages}</small>
-      <br />
-      <small>Maximum number of pages: {maxPages}</small>
-      <br />
-      <small>Minimum price: {minPriceSort}</small>
-      <br />
-      <small>Maximum price: {maxPriceReduce}</small>
-      {books.map((b) => (
-        <BookListItem key={b.id} book={b} />
-      ))}
-    </div>
+    <ThemeContext.Provider value={{ primaryColor, setPrimaryColor }}>
+      <div className="book-list">
+        <small>Number of books: {books.length}</small>
+        <br />
+        <small>Minimum number of pages: {minPages}</small>
+        <br />
+        <small>Maximum number of pages: {maxPages}</small>
+        <br />
+        <small>Minimum price: {minPriceSort}</small>
+        <br />
+        <small>Maximum price: {maxPriceReduce}</small>
+        {books.map((b) => (
+          <BookListItem key={b.id} book={b} />
+        ))}
+      </div>
+    </ThemeContext.Provider>
   );
 };
