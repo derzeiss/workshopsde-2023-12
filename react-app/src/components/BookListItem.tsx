@@ -3,6 +3,7 @@ import { Book, cx } from "workshops-de_shared";
 import { Hideable } from "./Hideable";
 import { LikeCounter } from "./LikeCounter";
 import { ThemeContext } from "../domain/theme/ThemeContext";
+import { Link } from "react-router-dom";
 
 interface BookListItemProps {
   book: Book;
@@ -15,12 +16,14 @@ export const BookListItem: React.FC<BookListItemProps> = ({ book }) => {
 
   return (
     <div className={cx("book-list-item", { "book-list-item_free": isFree })}>
-      <img src={book.cover} alt={`Cover of ${book.title}`} />
-      <h2 style={{ color: primaryColor }}>
-        {likes >= 5 && <span className="icon_entry">⭐️ </span>}
-        {isFree && <span>💰 </span>}
-        {book.title}
-      </h2>
+      <Link to={`/books/${book.isbn}`}>
+        <img src={book.cover} alt={`Cover of ${book.title}`} />
+        <h2 style={{ color: primaryColor }}>
+          {likes >= 5 && <span className="icon_entry">⭐️ </span>}
+          {isFree && <span>💰 </span>}
+          {book.title}
+        </h2>
+      </Link>
       <LikeCounter likes={likes} onLikesChange={setLikes} />
       <h3>{book.subtitle}</h3>
       {/* <CrazyButton>{book.author}</CrazyButton> */}
