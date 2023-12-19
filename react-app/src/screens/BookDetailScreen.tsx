@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getBook } from "../domain/book/api";
 import { useEffect, useState } from "react";
 import { Book } from "workshops-de_shared";
@@ -31,6 +31,12 @@ export const BookDetailScreen = () => {
       <h2 className="m-top m-bottom">{book.price}</h2>
 
       <p>{book.abstract}</p>
+
+      <Link to={`/books/${book.isbn}/edit`} className="m-top">
+        <button>
+          <span>✏️</span> Edit Book
+        </button>
+      </Link>
     </div>
   );
 };

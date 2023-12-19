@@ -10,6 +10,7 @@ function App() {
     <ThemeContext.Provider value={{ primaryColor, setPrimaryColor }}>
       <div className="app">
         <AppHeader />
+
         <Outlet />
       </div>
     </ThemeContext.Provider>
