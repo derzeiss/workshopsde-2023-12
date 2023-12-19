@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>form example</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+
+    <form action="/form" method="post">
+      <label for="i--email">E-Mail</label>
+      <input type="text" id="i--email" name="email" />
+
+      <label for="i--password">Password</label>
+      <input type="text" id="i--password" name="password" />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- <textarea>{{response}}</textarea> -->
+
+    <style>
+      html,
+      body {
+        font: 400 16px/1.5 sans-serif;
+      }
+
+      label {
+        display: block;
+      }
+
+      input {
+        font: inherit;
+      }
+
+      button {
+        display: block;
+        margin-top: 1rem;
+      }
+    </style>
+  </body>
+</html>
