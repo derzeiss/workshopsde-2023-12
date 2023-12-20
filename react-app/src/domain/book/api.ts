@@ -1,5 +1,5 @@
-import { Book } from "workshops-de_shared";
-import { URL_API } from "../../config";
+import { Book } from 'workshops-de_shared';
+import { URL_API } from '../../config';
 
 // ---- PRIVATE HELPERS ----
 
@@ -13,8 +13,8 @@ const getJsonInit = (init?: RequestInit): RequestInit | undefined => {
   return {
     ...init,
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
       ...init?.headers,
     },
   };
@@ -28,7 +28,7 @@ const getJsonInit = (init?: RequestInit): RequestInit | undefined => {
  */
 const fetchJson = <T = void>(url: string, init?: RequestInit) => {
   return fetch(url, getJsonInit(init)).then((res) =>
-    res.ok ? (res.json() as Promise<T>) : Promise.reject(res)
+    res.ok ? (res.json() as Promise<T>) : Promise.reject(res),
   );
 };
 
@@ -44,8 +44,7 @@ export const getBooks = () => fetchJson<Book[]>(`${URL_API}/books`);
  * Fetches a single book from the bookmonkey-API.
  * @returns Promise resolving to the fetched book.
  */
-export const getBook = (id: string) =>
-  fetchJson<Book>(`${URL_API}/books/${id}`);
+export const getBook = (id: string) => fetchJson<Book>(`${URL_API}/books/${id}`);
 
 /**
  * Edits a book via the bookmonkey-API.
@@ -53,17 +52,33 @@ export const getBook = (id: string) =>
  */
 export const editBook = (book: Book) =>
   fetchJson<Book>(`${URL_API}/books/${book.id}`, {
-    method: "put",
+    method: 'put',
     body: JSON.stringify(book),
   });
+
+/**
+ * Patches a given book.
+ * @param isbn book isbn.
+ * @param book partial of book containing changed fields.
+ * @returns updated book.
+ */
+export const patchBook = (isbn: string, book: Partial<Book>) => {
+  return fetch(`http://localhost:4730/books/${isbn}`, {
+    method: 'patch',
+    body: JSON.stringify(book),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => (res.ok ? res.json() : Promise.reject(res))) as Promise<Book>;
+};
 
 /**
  * Posts a new book to the bookmonkey-API.
  * @returns Promise resolving to the added book.
  */
-export const addBook = <Book>(book: Omit<Book, "id" | "isbn">) =>
+export const addBook = <Book>(book: Omit<Book, 'id' | 'isbn'>) =>
   fetchJson(`${URL_API}/books`, {
-    method: "post",
+    method: 'post',
     body: JSON.stringify(book),
   });
 
@@ -74,5 +89,5 @@ export const addBook = <Book>(book: Omit<Book, "id" | "isbn">) =>
 
 export const removeBook = (id: string) =>
   fetchJson(`${URL_API}/books/${id}`, {
-    method: "delete",
+    method: 'delete',
   });

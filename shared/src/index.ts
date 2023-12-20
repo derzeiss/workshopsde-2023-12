@@ -1,6 +1,7 @@
 // util
 export * from "./util/cx";
 export * from "./util/formatPrice";
+export * from "./util/getNextId";
 export * from "./util/randint";
 
 // types
