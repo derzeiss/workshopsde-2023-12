@@ -1,22 +1,12 @@
 import { Link, useParams } from "react-router-dom";
-import { getBook } from "../domain/book/api";
-import { useEffect, useState } from "react";
-import { Book } from "workshops-de_shared";
+import { useBook } from "../domain/book/useBook";
 
 export const BookDetailScreen = () => {
   const { isbn } = useParams<{ isbn: string }>();
-  const [book, setBook] = useState<Book>();
+  const { book, state } = useBook(isbn);
 
-  useEffect(() => {
-    if (!isbn) return;
-    getBook(isbn)
-      .then(setBook)
-      .catch((err) => {
-        console.error("err", err);
-      });
-  }, [isbn]);
-
-  if (!book) return <h2>Loading...</h2>;
+  if (state === "initial" || state === "loading" || !book)
+    return <h2>Loading...</h2>;
 
   return (
     <div className="book-detail-screen">
@@ -35,6 +25,11 @@ export const BookDetailScreen = () => {
       <Link to={`/books/${book.isbn}/edit`} className="m-top">
         <button>
           <span>✏️</span> Edit Book
+        </button>
+      </Link>
+      <Link to={`/books/${book.isbn}/editUncontrolled`} className="m-top">
+        <button>
+          <span>✏️</span> Edit Book (uncontrolled form)
         </button>
       </Link>
     </div>

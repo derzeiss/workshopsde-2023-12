@@ -1,11 +1,12 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import App from "./App";
-import { ErrorScreen } from "./screens/ErrorScreen";
 import { AboutScreen } from "./screens/AboutScreen";
-import { BooksScreen } from "./screens/BooksScreen";
-import { CounterScreen } from "./screens/CounterScreen";
 import { BookDetailScreen } from "./screens/BookDetailScreen";
 import { BookEditScreen } from "./screens/BookEditScreen";
+import { BooksScreen } from "./screens/BooksScreen";
+import { CounterScreen } from "./screens/CounterScreen";
+import { ErrorScreen } from "./screens/ErrorScreen";
+import { BookEditScreenUncontrolled } from "./screens/BookEditScreenUncontrolled";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/books/:isbn/edit",
         element: <BookEditScreen />,
+      },
+      {
+        path: "/books/:isbn/editUncontrolled",
+        element: <BookEditScreenUncontrolled />,
       },
       {
         path: "/about",
