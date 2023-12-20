@@ -1,7 +1,13 @@
+# dev env
 .vscode/
-node_modules/
-dist/
-
-prep/
-
 .env
+
+# lib
+node_modules/
+
+# generated
+dist/
+coverage/
+
+# custom
+prep/
