@@ -1,6 +1,6 @@
 import { HTMLProps, useState } from 'react';
-import { useFormBucket } from '../domain/forms/FormBucketContext';
 import { cx, getNextId } from 'workshops-de_shared';
+import { useFormBucket } from '../domain/forms/useFormBucket';
 
 interface TextboxProps extends HTMLProps<HTMLInputElement> {
   label: string;

@@ -56,7 +56,7 @@ export const Form = <T extends object>({
   };
 
   return (
-    <FormBucketContext.Provider value={{ formBucket, setFormBucket }}>
+    <FormBucketContext.Provider value={{ formBucket, setFormBucket: setFormBucket }}>
       <form {...props} onSubmit={handleSubmit}>
         {children && typeof children === 'function' ? children(formBucket) : children}
       </form>
