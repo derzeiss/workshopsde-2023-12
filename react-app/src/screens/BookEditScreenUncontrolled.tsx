@@ -1,5 +1,5 @@
-import { FormEvent, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
+import { FormEvent, useRef } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 export const BookEditScreenUncontrolled = () => {
   const { isbn } = useParams<{ isbn: string }>();
@@ -9,9 +9,9 @@ export const BookEditScreenUncontrolled = () => {
     ev.preventDefault();
     const data = new FormData(ev.target as HTMLFormElement);
     const values = Object.fromEntries(data);
-    console.log("values", values);
-    console.log("title", data.get("title"));
-    console.log("title", data.getAll("multi"));
+    console.log('values', values);
+    console.log('title', data.get('title'));
+    console.log('title', data.getAll('multi'));
   };
 
   return (
@@ -42,10 +42,7 @@ export const BookEditScreenUncontrolled = () => {
           </label>
         </div>
 
-        <div
-          style={{ display: "flex", alignItems: "center", gap: "1rem" }}
-          className="m-top"
-        >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className="m-top">
           <button type="submit">
             <span>💾</span>Save
           </button>
