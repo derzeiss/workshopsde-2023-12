@@ -1,12 +1,11 @@
-import { Link, useParams } from "react-router-dom";
-import { useBook } from "../domain/book/useBook";
+import { Link, useParams } from 'react-router-dom';
+import { useBook } from '../domain/book/useBook';
 
 export const BookDetailScreen = () => {
   const { isbn } = useParams<{ isbn: string }>();
   const { book, state } = useBook(isbn);
 
-  if (state === "initial" || state === "loading" || !book)
-    return <h2>Loading...</h2>;
+  if (state === 'initial' || state === 'loading' || !book) return <h2>Loading...</h2>;
 
   return (
     <div className="book-detail-screen">

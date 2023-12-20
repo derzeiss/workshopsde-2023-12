@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
-import { FetchState, Book } from "workshops-de_shared";
-import { getBook } from "./api";
+import { useState, useEffect } from 'react';
+import { FetchState, Book } from 'workshops-de_shared';
+import { getBook } from './api';
 
 export const useBook = (isbn?: string) => {
-  const [state, setState] = useState<FetchState>("initial");
+  const [state, setState] = useState<FetchState>('initial');
   const [book, setBook] = useState<Book>();
 
   useEffect(() => {
     if (!isbn) return;
 
-    setState("loading");
+    setState('loading');
     getBook(isbn)
       .then((book) => {
-        setState("success");
+        setState('success');
         setBook(book);
       })
       .catch((err) => {
-        console.error("FETCH ERR:", err);
-        setState("error");
+        console.error('FETCH ERR:', err);
+        setState('error');
       });
   }, [isbn]);
 

@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import logo from "../img/logo.png";
-import { ThemeContext } from "../domain/theme/ThemeContext";
-import { ThemeEditor } from "../domain/theme/ThemeEditor";
-import { NavLink } from "react-router-dom";
+import { useContext } from 'react';
+import logo from '../img/logo.png';
+import { ThemeContext } from '../domain/theme/ThemeContext';
+import { ThemeEditor } from '../domain/theme/ThemeEditor';
+import { NavLink } from 'react-router-dom';
 
 export const AppHeader = () => {
   const { primaryColor } = useContext(ThemeContext);

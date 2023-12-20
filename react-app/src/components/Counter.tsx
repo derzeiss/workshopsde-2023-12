@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { CounterHook } from "../domain/counter/CounterHook";
+import { useRef } from 'react';
+import { CounterHook } from '../domain/counter/CounterHook';
 
 interface CounterProps {
   initialValue?: number;
@@ -7,8 +7,7 @@ interface CounterProps {
 }
 
 export const Counter = ({ initialValue = 0, useCounter }: CounterProps) => {
-  const { count, incrementCount, decrementCount, resetCount } =
-    useCounter(initialValue);
+  const { count, incrementCount, decrementCount, resetCount } = useCounter(initialValue);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -28,7 +27,7 @@ export const Counter = ({ initialValue = 0, useCounter }: CounterProps) => {
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
-          console.log("submit val", inputRef.current?.value);
+          console.log('submit val', inputRef.current?.value);
         }}
       >
         <input type="text" ref={inputRef} />

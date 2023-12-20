@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import { Book, cx } from "workshops-de_shared";
-import { Hideable } from "./Hideable";
-import { LikeCounter } from "./LikeCounter";
-import { ThemeContext } from "../domain/theme/ThemeContext";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from 'react';
+import { Book, cx } from 'workshops-de_shared';
+import { Hideable } from './Hideable';
+import { LikeCounter } from './LikeCounter';
+import { ThemeContext } from '../domain/theme/ThemeContext';
+import { Link } from 'react-router-dom';
 
 interface BookListItemProps {
   book: Book;
@@ -12,10 +12,10 @@ interface BookListItemProps {
 export const BookListItem: React.FC<BookListItemProps> = ({ book }) => {
   const { primaryColor } = useContext(ThemeContext);
   const [likes, setLikes] = useState(0);
-  const isFree = book.price === "$0.00";
+  const isFree = book.price === '$0.00';
 
   return (
-    <div className={cx("book-list-item", { "book-list-item_free": isFree })}>
+    <div className={cx('book-list-item', { 'book-list-item_free': isFree })}>
       <Link to={`/books/${book.isbn}`}>
         <img src={book.cover} alt={`Cover of ${book.title}`} />
         <h2 style={{ color: primaryColor }}>

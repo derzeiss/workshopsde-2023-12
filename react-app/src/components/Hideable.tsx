@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState } from 'react';
 
 interface HideableProps {
   children?: ReactNode;
@@ -12,7 +12,7 @@ export const Hideable = ({ children }: HideableProps) => {
     <div className="hideable">
       {!hidden && <p>{children}</p>}
       <button className="tertiary m-top" onClick={() => setHidden(!hidden)}>
-        {hidden ? "+ show" : "- hide"} details
+        {hidden ? '+ show' : '- hide'} details
       </button>
     </div>
   );

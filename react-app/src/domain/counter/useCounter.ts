@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { randint } from "workshops-de_shared";
-import { CounterHook } from "./CounterHook";
+import { useState } from 'react';
+import { randint } from 'workshops-de_shared';
+import { CounterHook } from './CounterHook';
 
 export const useCounter: CounterHook = (initialValue) => {
   const [count, setCount] = useState(initialValue);

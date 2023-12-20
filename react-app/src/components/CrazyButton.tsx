@@ -1,7 +1,7 @@
-import { PropsWithChildren, useState } from "react";
-import { randint } from "workshops-de_shared";
+import { PropsWithChildren, useState } from 'react';
+import { randint } from 'workshops-de_shared';
 
-const colors = ["red", "green", "blue", "yellow"];
+const colors = ['red', 'green', 'blue', 'yellow'];
 
 const pick = <T,>(arr: T[]) => {
   return arr[randint(arr.length)];

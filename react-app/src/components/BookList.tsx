@@ -1,7 +1,7 @@
-import { Book, formatPrice } from "workshops-de_shared";
-import { BookListItem } from "./BookListItem";
-import { ThemeContext } from "../domain/theme/ThemeContext";
-import { useState } from "react";
+import { Book, formatPrice } from 'workshops-de_shared';
+import { BookListItem } from './BookListItem';
+import { ThemeContext } from '../domain/theme/ThemeContext';
+import { useState } from 'react';
 
 interface BookListProps {
   books: Book[];
@@ -22,14 +22,12 @@ interface BookListProps {
 // };
 
 export const BookList = ({ books }: BookListProps) => {
-  const [primaryColor, setPrimaryColor] = useState("green");
+  const [primaryColor, setPrimaryColor] = useState('green');
   const minPages = books.map((book) => book.numPages).sort()[0];
   const maxPages = books.map((book) => book.numPages).sort()[books.length - 1];
 
   const minPriceSort = formatPrice(
-    books.map((b) => +b.price.substring(1)).sort((a, b) => a - b)[
-      books.length - 1
-    ]
+    books.map((b) => +b.price.substring(1)).sort((a, b) => a - b)[books.length - 1],
   );
 
   const maxPriceReduce = books
