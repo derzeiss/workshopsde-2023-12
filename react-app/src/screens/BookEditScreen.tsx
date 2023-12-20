@@ -2,6 +2,7 @@ import { ChangeEventHandler, FormEvent, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Book } from 'workshops-de_shared';
 import { useBook } from '../domain/book/useBook';
+import { editBook } from '../domain/book/api';
 
 export const BookEditScreen = () => {
   const { isbn } = useParams<{ isbn: string }>();
@@ -22,7 +23,9 @@ export const BookEditScreen = () => {
 
   const [touched, setTouched] = useState<Partial<Record<keyof Book, boolean>>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof Book, string>>>({});
+  const [saveMsg, setSaveMsg] = useState<string>();
 
+  // update title error
   useEffect(() => {
     const titleErr =
       formValues.title?.length < 5 ? 'Title must be at least 5 characters long.' : undefined;
@@ -30,18 +33,32 @@ export const BookEditScreen = () => {
     setErrors({ ...errors, title: titleErr });
   }, [formValues.title]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // prefill form with data from api
+  useEffect(() => {
+    if (!book) return;
+    setFormValues({ ...book });
+  }, [book]);
+
   const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    alert(formValues.title);
+    console.log(formValues.title);
+    editBook(formValues)
+      .then(() => {
+        setSaveMsg('Saved successfully!');
+      })
+      .catch((err) => {
+        console.error(err);
+        setSaveMsg('Error while saving.');
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setSaveMsg(undefined);
+        }, 5000);
+      });
   };
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (ev) =>
     setFormValues({ ...formValues, [ev.target.name]: ev.target.value });
-
-  useEffect(() => {
-    if (!book) return;
-    // setFormValues({ ...book });
-  }, [book]);
 
   if (state === 'initial' || state === 'loading') return <h2>Loading...</h2>;
 
@@ -76,6 +93,7 @@ export const BookEditScreen = () => {
         <button type="submit" className="m-top">
           <span>💾</span>Save
         </button>
+        {saveMsg && <div>{saveMsg}</div>}
 
         <pre>{JSON.stringify(formValues, null, 2)}</pre>
       </form>
